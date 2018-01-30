@@ -1,0 +1,48 @@
+注册中心zk
+D:\java\dubbo-component\zookeeper-3.4.9\bin\zkServer.cmd
+
+dubbo管控台的安装
+启动tomcat D:\java\dubbo-component\dubbo-admin-t7.0.41\bin\startup.bat
+http://localhost:8081
+dubbo.admin.root.password=root
+dubbo.admin.guest.password=guest
+
+监控中心
+http://localhost:8082/
+D:\java\dubbo-component\dubbo-monitor-simple-2.5.4-SNAPSHOT\bin\start.bat
+##
+dubbo.container=log4j,spring,registry,jetty
+dubbo.application.name=simple-monitor
+dubbo.application.owner=
+#dubbo.registry.address=multicast://224.5.6.7:1234
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+#dubbo.registry.address=redis://127.0.0.1:6379
+#dubbo.registry.address=dubbo://127.0.0.1:9090
+dubbo.protocol.port=7072
+dubbo.jetty.port=8082
+dubbo.jetty.directory=${user.home}/monitor
+dubbo.charts.directory=${dubbo.jetty.directory}/charts
+dubbo.statistics.directory=${user.home}/monitor/statistics
+dubbo.log4j.file=logs/dubbo-monitor-simple.log
+dubbo.log4j.level=WARN
+
+消息队列mq
+cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.11\sbin
+启动服务：net start RabbitMQ
+停止服务：net stop RabbitMQ
+http://localhost:15672
+name：rabbitmq
+password：rabbitmq
+为新用户分配访问virtualhost "/"的访问权限：rabbitmqctl set_permissions -p / rabbitmq ".*" ".*" ".*"
+
+taokeeper监控平台
+D:\java\dubbo-component\taokeeper-tomcat-7.0.41\bin\startup.bat
+localhost:8083/taokeeper-monitor
+
+web系统访问登录界面
+http://localhost:8080/di-web-demo
+
+openApi系统管理界面
+http://localhost:8080/di-open-api/
+
+
